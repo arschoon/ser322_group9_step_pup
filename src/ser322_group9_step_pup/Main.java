@@ -3,23 +3,28 @@ package ser322_group9_step_pup;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Main {
     
     public static void main(String[] args) {
         //url = "jdbc:mysql://localhost:3306/Group9";
         //username = "root";
-        //System.out.println("Please enter password:");
-        //password = args[0];
-        if(args.length != 3) {
-            System.out.println("USAGE: ");
-            System.exit(0);
-        }
+        
+        Scanner scan;
+        
         try
         {
-            String url = args[0];
-            Connection connection = DriverManager.getConnection(url, args[1], args[2]);
+            scan = new Scanner(System.in);
+            System.out.println("Enter URL:");
+            String url = scan.nextLine();
+            System.out.println("Enter Username:");
+            String user = scan.nextLine();
+            System.out.println("Enter Password:");
+            String pass = scan.nextLine();
+            Connection connection = DriverManager.getConnection(url, user, pass);
             System.out.println("Connected");
+            scan.close();
         }
         catch (SQLException e)
         {
